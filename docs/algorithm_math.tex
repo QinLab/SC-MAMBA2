@@ -120,9 +120,6 @@ Given $\mathbf{H}\in\mathbb{R}^{B\times L\times d}$, cell embedding $\mathbf{c}\
 \texttt{w-pool}:\quad &\mathbf{c}=\mathrm{norm}\!\left(\sum_{\ell=1}^{L} w_{:\ell}\,\mathbf{H}_{:,\ell,:}\right).
 \end{align}
 
-\paragraph{Practical meaning.}
-$\mathbf{c}$ is the cell-level summary vector used by downstream tasks (annotation, integration, adversarial batch correction, etc.).
-
 \section{Decoder heads}
 \subsection{Expression decoder (MLM/GEP head)}
 Token-wise MLP predicts expression values:
@@ -135,9 +132,6 @@ Optional explicit zero-probability head:
 \begin{equation}
 \mathbf{P}_{0} = \sigma\!\left(f_{0}(\mathbf{H})\right) \in [0,1]^{B\times L}.
 \end{equation}
-
-\paragraph{Why explicit zero modeling?}
-Single-cell data are sparse (many zeros). Predicting a dedicated zero probability can model dropout/zero inflation better than pure regression alone.
 
 \subsection{Cell-type classification head}
 \begin{equation}
